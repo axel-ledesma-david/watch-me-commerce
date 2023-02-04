@@ -1,7 +1,5 @@
 import React from 'react'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-
-/* import './App.css' */
 import NavBar from './components/NavBar/NavBar'
 
 function App() {
