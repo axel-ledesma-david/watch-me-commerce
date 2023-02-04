@@ -1,0 +1,30 @@
+ion-icon {
+    font-size: 30px;
+}
+
+.container-cart-icon {
+    display: flex;
+    width: 47px;
+    height: 50px;
+  /*   border: solid saddlebrown 3px; */
+    position: relative;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.span-cart {
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 100%;
+    background-color: red;
+    width: 15px;
+    height: 35%;
+    text-align: center;
+    bottom: 38px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+}
