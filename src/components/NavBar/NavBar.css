@@ -10,6 +10,8 @@ ion-icon {
     gap: 5px;
     align-items: center;
     cursor: pointer;
+    border: none;
+    background: transparent;
 }
 
 .span-cart {
