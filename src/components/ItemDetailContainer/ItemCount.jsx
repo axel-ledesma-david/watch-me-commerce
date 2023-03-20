@@ -18,6 +18,7 @@ const ItemCount = ({ title, price, img, id}) => {
           
             product.quantity += count
             newCart = [...cart]
+            setCart(newCart)
             
             console.log("ITEM: ", product) 
         } else if(product === undefined) {
