@@ -1,42 +1,52 @@
-import React from 'react'
+import { useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import Data from '../../data/data.json'
 
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import '../ItemDetailContainer/ItemDetailContainer.css'
+
+import ItemCount from './ItemCount'
 
 const ItemDetailContainer = () => {
 
   const { id } = useParams()
 
+  const [watch, setWatch] = useState([])
 
-  const filterItem = Data.filter(item => item.id == id)
-  /* const description = filterItem.map(item => item.description )
-  const arrDescription = [...description]  */
+  useEffect(() => {
+    const db = getFirestore()
 
+    const document = doc(db, "watches", `${id}`)
+    getDoc(document).then(snapshot => {
+      if (snapshot.exists()) {
+        const doc = snapshot.data()
+        setWatch(doc)
+      }
+    })
+  }, [])
 
   return (
     <div className="container d-flex justify-content-center align-items-center height-detail">
-      <div className="card mb-3" style={{maxWidth: "540px"}}>
-      <div className="row g-0">
-        <div className="col-md-4">
-          <img src={filterItem[0].image} className="img-fluid rounded-start" alt={filterItem[0].name} />
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title">{filterItem[0].name} </h5>
+      <div className="card mb-3 border-0 shadow" style={{ maxWidth: "750px" }}>
+        <div className="row g-0">
+          <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
+            <img src={watch.image} className="img-fluid rounded-start" alt={watch.title} />
+            <span>$ {watch.price}</span>
+            <ItemCount
+              price={watch.price}
+              img={watch.image}
+              title={watch.title}
+              id ={id}
+            />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{watch.title} </h5>
 
-            <p>Descripción en construcción...</p>
-            {/* <ul>
-              {arrDescription.map(item => (
-                <li>
-                 <p> <b>{Object.keys(item)} :</b> {item}</p>
-                </li>
-              ))}
-            </ul> */}
+              <p>{watch.description}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }

@@ -1,0 +1,8 @@
+.cover-home {
+    height: 90vh;
+    background: linear-gradient( rgba(85, 74, 74, 0.377), rgba(126, 108, 108, 0.445), rgba(122, 118, 118, 0.438) ), url(https://www.reliancedigital.in/wp-content/uploads/2022/08/Samsung_Galaxy_Watch_5_Cover.jpg) ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

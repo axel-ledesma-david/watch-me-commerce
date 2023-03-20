@@ -29,3 +29,8 @@ ion-icon {
     align-items: center;
     color: aliceblue;
 }
+
+.logoNav {
+    width: 65px;
+    height: 65px;
+}

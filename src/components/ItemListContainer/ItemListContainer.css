@@ -4,6 +4,12 @@
     text-overflow: ellipsis;
 }
 
-/* .btn {
+.price {
+    color: cadetblue;
+    font-size: 1.40rem;
+    font-weight: bold;
+}
 
-} */
+.img--card__watch {
+    object-fit: cover;
+}
