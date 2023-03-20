@@ -8,18 +8,14 @@ const ItemCount = ({ title, price, img, id}) => {
     const [ count, setCount ] = useState(0)
     const { cart, setCart } = useContext(CartContext)
     const [ reload, setReload ] = useState(false)
-    /* const [ isInCart, setIsInCart ] = useState(false) */
+
 
     const addItem = ()=>{
         const product = cart.find( product => product.id === id )
         let newCart
         console.log("ITEM ID FIND? ", product)
          if(product){
-            /* const item = cart.filter( item => item.id === id ) */
-
-            /* setCart({...item, quantity : cart.quantity + count}) */
-            
-            /* product.quantity = count + product.quantity */
+          
             product.quantity += count
             newCart = [...cart]
             
@@ -32,9 +28,9 @@ const ItemCount = ({ title, price, img, id}) => {
         console.log("CART: ", cart)
         setReload(true)
     }   
-
-    useEffect(()=>{
     
+    useEffect(()=>{
+        console.log("CART fuera de la funcion: ",cart)
     },[reload, cart, addItem] )
     const addCount = ()=>{
         setCount( count + 1)
@@ -46,27 +42,7 @@ const ItemCount = ({ title, price, img, id}) => {
 
 
 
-   /*  const addItem = ()=>{
-        
-
-        setCart(
-            (currentCart) => {
-                const isInCart = currentCart.find( product => product.id === id )
-                if (isInCart) {
-                    currentCart.map(item => {
-                        return { ...item, quantity : item.quantity + count }
-                    })
-                } else {
-                    currentCart.map(item => {
-                        return [...item, { id, quantity : count, price, title, img }]
-                    })
-                }
-            }
-        )
-
-        console.log("CART", cart)
-    } */
-
+ 
 
     console.log(count)
 

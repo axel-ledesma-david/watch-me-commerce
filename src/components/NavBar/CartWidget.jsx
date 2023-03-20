@@ -10,7 +10,7 @@ const CartWidget = () => {
     
  
     const quantity = cart.reduce( (sum, curr) => {
-        return sum + curr
+        return sum + curr.quantity
     }, 0 )
     useEffect(()=>{
 
