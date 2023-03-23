@@ -1,5 +1,6 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '../../context/ShoppingCartContext'
+import { Link } from 'react-router-dom'
 
 
 
@@ -12,16 +13,14 @@ const CartWidget = () => {
     const quantity = cart.reduce( (sum, curr) => {
         return sum + curr.quantity
     }, 0 )
-    useEffect(()=>{
 
-    }, [cart, quantity] )
 
 
     return (
-        <button className="container-cart-icon">
+        <Link to='/cart' className="container-cart-icon">
             <ion-icon name="cart-outline"></ion-icon>
             { quantity > 0 ? <div className='span-cart' >{quantity}</div> : '' }
-        </button>
+        </Link>
     )
 }
 

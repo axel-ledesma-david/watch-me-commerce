@@ -1,38 +1,46 @@
-import { useState, useContext, useEffect} from 'react'
+import { useState, useContext} from 'react'
 import { CartContext } from '../../context/ShoppingCartContext'
 import '../ItemDetailContainer/ItemDetailContainer.css'
+import Swal from 'sweetalert2'
 
-const ItemCount = ({ title, price, img, id}) => {
+const ItemCount = ({ title, price, img, id, stock}) => {
 
 
     const [ count, setCount ] = useState(0)
-    const { cart, setCart } = useContext(CartContext)
-    const [ reload, setReload ] = useState(false)
-
-
-    const addItem = ()=>{
-        const product = cart.find( product => product.id === id )
-        let newCart
-        console.log("ITEM ID FIND? ", product)
-         if(product){
-          
-            product.quantity += count
-            newCart = [...cart]
-            setCart(newCart)
-            
-            console.log("ITEM: ", product) 
-        } else if(product === undefined) {
-            newCart = [...cart, { id, title, price, img, quantity : count}]
-            setCart(newCart)
+    const { addItem } = useContext(CartContext)
+ 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
+      })
 
-        console.log("CART: ", cart)
-        setReload(true)
+    const onAddItem = ()=>{
+       const data = {
+        title,
+        price,
+        image: img,
+        id,
+        stock,
+        quantity : count
+       }
+        addItem(id, count, data)
+        
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Add to cart successfully'
+          })
+
+
     }   
-    
-    useEffect(()=>{
-        console.log("CART fuera de la funcion: ",cart)
-    },[reload, cart, addItem] )
+  
     const addCount = ()=>{
         setCount( count + 1)
     }
@@ -41,17 +49,11 @@ const ItemCount = ({ title, price, img, id}) => {
         setCount( count - 1 )
     }
 
-
-
- 
-
-    console.log(count)
-
     return (
         <div className="buttonsCart">
-            {count < 0 ? <button disabled >-</button> : <button onClick={subCount}>-</button> }
-            <button onClick={addItem} >Add to cart: {count}</button>
-            <button onClick={addCount} >+</button>
+            {count < 1 ? <button className='btn-count btn' disabled ><ion-icon className='icon-sub' name="remove-circle-outline"></ion-icon></button> : <button onClick={subCount} className='btn-count btn' ><ion-icon name="remove-circle-outline"></ion-icon></button> }
+            { count < 1 ? <button  className='btn btn-primary btn-add-cart'  disabled>Add to cart: {count}</button> : <button  className='btn btn-primary btn-add-cart' onClick={onAddItem}>Add to cart: {count}</button> }
+            { count >= stock ? <button className='btn-count btn' disabled ><ion-icon name="add-circle-outline"></ion-icon></button> : <button className='btn-count btn' onClick={addCount} ><ion-icon name="add-circle-outline"></ion-icon></button> }
         </div>
     )
 }

@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import '../ItemDetailContainer/ItemDetailContainer.css'
 
-import ItemCount from './ItemCount'
+
+import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
 
@@ -26,27 +27,14 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="container d-flex justify-content-center align-items-center height-detail">
-      <div className="card mb-3 border-0 shadow" style={{ maxWidth: "750px" }}>
-        <div className="row g-0">
-          <div className="col-md-4 d-flex flex-column justify-content-center align-items-center">
-            <img src={watch.image} className="img-fluid rounded-start" alt={watch.title} />
-            <span>$ {watch.price}</span>
-            <ItemCount
-              price={watch.price}
-              img={watch.image}
-              title={watch.title}
-              id ={id}
-            />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">{watch.title} </h5>
-
-              <p>{watch.description}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      { watch != undefined ? (
+       <ItemDetail
+        watch={watch}
+        id={id}
+      />
+      ) : <div className="spinner-border text-secondary" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </div> }
     </div>
   )
 }

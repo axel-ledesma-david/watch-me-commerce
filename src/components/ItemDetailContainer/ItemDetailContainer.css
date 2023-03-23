@@ -1,3 +1,25 @@
 .height-detail {
-    height: 100vh;
+    height: auto;
+    padding: 15px;
+}
+.btn-count {
+    border: none;
+    background-color: azure;
+}
+.buttonsCart {
+    width: 260px;
+}
+
+
+.buttonsCart > ion-icon {
+    font-size: 10px;
+}
+
+.buttonsCart > button {
+    outline: none;
+    border: none;
+}
+
+.btn-add-cart {
+    width: 130px;
 }

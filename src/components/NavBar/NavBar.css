@@ -9,9 +9,10 @@ ion-icon {
     position: relative;
     gap: 5px;
     align-items: center;
-    cursor: pointer;
     border: none;
     background: transparent;
+    text-decoration: none;
+    color: black;
 }
 
 .span-cart {

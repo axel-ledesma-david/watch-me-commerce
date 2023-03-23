@@ -1,0 +1,41 @@
+.cart-container {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+.img-cart {
+    object-fit: cover;
+    height: 70%;
+    width: 400px;   
+}
+
+.trash-cart {
+    font-size: 10px;
+}
+
+.card-cart {
+    max-width: 540px;
+   /*  width: 550px; */
+   /* width: 40%; */
+    width: 30rem;
+    height: 150px;
+}
+
+.title-cart {
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.container-no-products {
+    height: 60vh;
+    width: 100%;
+}
+
+@media screen and (max-width: 521px){
+    .card-cart{
+        width: 20rem;
+    }
+}
