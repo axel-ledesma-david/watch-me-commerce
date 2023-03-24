@@ -30,6 +30,15 @@ de mandar el formulario
 ### Aos
 Aos es una librería que implementé para crear efectos en algunos elementos del dom al hacer scroll en la página. Una cuestión puramente estética al igual que bootstrap.
 
+## Flow
+
+Como mencione anteriormente, al iniciar la página o al cargarla solo aparece el navbar y el footer. Pero quitando de lado eso, en el menú de navegación se pueden encontrar las rutas Home, Catalogue y Categoria. Al entrar al catalogo uno puede buscar entre muchos productos (relojes) de distintios tipos, se puede ver el detalle del producto y agregarlo al carrito si así lo desea. También se puede filtrar por categoria con la ruta "Catalogue". Y por último está la página del carrito donde estarán todos los productos seleccionados con su precio y el precio total de todos los productos con sus cantidades. También tiene un formulario donde se pedirán algunos datos para poder confirmar la orden.
+
+
+![chrome_aBiIav50j0](https://user-images.githubusercontent.com/74274367/227411513-f51d6040-69c5-4da7-901a-a4581ea82188.gif)
+
+
+![chrome_ieFBQp4yGl](https://user-images.githubusercontent.com/74274367/227411839-158c0197-afc6-4cc7-8fbc-cda3a0ad6b26.gif)
 
 
 
